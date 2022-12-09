@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type="text/javascript">
+      function changeFunc() {
+        var modalGoogle = document.getElementById('myModal-google');
+        var modalZoom = document.getElementById('myModal-zoom');
+        var selectBox = document.getElementById('selectBox');
+        var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+        if (selectedValue == 'zoom') modalZoom.style.display = 'block';
+        else modalGoogle.style.display = 'block';
+      }
+      function closeModal() {
+        var modalGoogle = document.getElementById('myModal-google');
+        var modalZoom = document.getElementById('myModal-zoom');
+
+        modalZoom.style.display = 'none';
+        modalGoogle.style.display = 'none';
+      }
+      function onSubmit() {
+        console.log(
+          document.getElementById('meetId').value,
+          document.getElementById('passcode').value
+        );
+      }
+
+      window.onclick = function (event) {
+        var modalGoogle = document.getElementById('myModal-google');
+        var modalZoom = document.getElementById('myModal-zoom');
+        if (event.target == modalGoogle) {
+          modalGoogle.style.display = 'none';
+        }
+        if (event.target == modalZoom) {
+          modalZoom.style.display = 'none';
+        }
+      };
+    </script>
+    <style>
+      body {
+        background-color: lightblue;
+      }
+      h1 {
+        color: white;
+        text-align: center;
+      }
+
+      p {
+        font-family: verdana;
+        font-size: 20px;
+      }
+      .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0, 0, 0); /* Fallback color */
+        background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+      }
+
+      /* Modal Content */
+      .modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+      }
+
+      /* The Close Button */
+      .close {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+      }
+
+      .close:hover,
+      .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      .selectBox {
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <select id="selectBox" class="selectBox" onchange="changeFunc();">
+      <option value="google">Google Meet</option>
+      <option value="zoom">Zoom</option>
+    </select>
+
+    <div id="myModal-google" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <button class="close" id="close" onclick="closeModal();">
+          &times;
+        </button>
+        <h2>Meeting Details:</h2>
+        <form action="#">
+          <label for="meetID">Meeting ID:</label><br />
+          <input type="text" id="meetID" name="meetId" /><br /><br />
+          <input type="submit" value="Submit" />
+        </form>
+      </div>
+    </div>
+    <div id="myModal-zoom" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <button class="close" id="close" onclick="closeModal();">
+          &times;
+        </button>
+        <h2>Meeting Details:</h2>
+        <form action="#">
+          <label for="meetID">Meeting ID:</label><br />
+          <input type="text" id="meetID" name="meetId" /><br />
+          <label for="passcode">Passcode:</label><br />
+          <input type="text" id="passcode" name="passcode" /><br /><br />
+          <input type="submit" value="Submit" />
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
